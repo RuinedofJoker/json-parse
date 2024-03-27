@@ -1,7 +1,6 @@
 package org.joker.json.parse;
 
 import org.joker.json.exception.JsonFormatErrorException;
-import org.joker.json.exception.common.Constants;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -42,7 +41,7 @@ public class ResolverGroup implements IJsonResolver {
         for (IJsonResolver jsonResolver : jsonResolvers) {
             if (jsonResolver.supportParse(json, currentIndex)) {
                 result = jsonResolver.parse(json, currentIndex);
-                if (!Objects.equals(result.getResult(), Constants.ILLEGAL_FLAG)) {
+                if (!Objects.equals(result.getResult(), IllegalFlag.ILLEGAL_FLAG)) {
                     result.setStartIndex(startIndex);
                     return result;
                 }

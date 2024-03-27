@@ -1,7 +1,6 @@
 package org.joker.json.parse;
 
 import org.joker.json.JsonArray;
-import org.joker.json.exception.common.Constants;
 
 
 public class JsonArrayResolver implements IJsonResolver {
@@ -29,7 +28,7 @@ public class JsonArrayResolver implements IJsonResolver {
             char currentChar = json.charAt(currentIndex);
             if (currentChar == ']') {
                 if (findSeparator) {
-                    result.setResult(Constants.ILLEGAL_FLAG);
+                    result.setResult(IllegalFlag.ILLEGAL_FLAG);
                     return result;
                 } else {
                     result.setEndIndex(currentIndex);
@@ -41,7 +40,7 @@ public class JsonArrayResolver implements IJsonResolver {
                 continue;
             } else if (currentChar == ',') {
                 if (initState || findSeparator) {
-                    result.setResult(Constants.ILLEGAL_FLAG);
+                    result.setResult(IllegalFlag.ILLEGAL_FLAG);
                     return result;
                 } else {
                     findSeparator = true;
@@ -58,7 +57,7 @@ public class JsonArrayResolver implements IJsonResolver {
         }
 
         if (!currentParseEnd) {
-            result.setResult(Constants.ILLEGAL_FLAG);
+            result.setResult(IllegalFlag.ILLEGAL_FLAG);
         }
         return result;
     }

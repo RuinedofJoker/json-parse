@@ -1,14 +1,12 @@
 package org.joker.json.parse;
 
-import org.joker.json.exception.common.Constants;
-
 public class ResolverParseResult {
 
     private final Object[] resultRecord;
 
     public ResolverParseResult() {
         resultRecord = new Object[3];
-        setResult(Constants.ILLEGAL_FLAG);
+        setResult(IllegalFlag.ILLEGAL_FLAG);
     }
 
     public ResolverParseResult(Integer startIndex) {

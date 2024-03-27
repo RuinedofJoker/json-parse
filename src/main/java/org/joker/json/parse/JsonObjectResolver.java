@@ -1,9 +1,6 @@
 package org.joker.json.parse;
 
-import org.joker.json.JsonArray;
 import org.joker.json.JsonObject;
-import org.joker.json.exception.JsonFormatErrorException;
-import org.joker.json.exception.common.Constants;
 
 public class JsonObjectResolver implements IJsonResolver {
 
@@ -40,7 +37,7 @@ public class JsonObjectResolver implements IJsonResolver {
                 continue;
             } else if (currentChar == ',') {
                 if (initState || kvFlag % 2 == 1 || findSeparator) {
-                    result.setResult(Constants.ILLEGAL_FLAG);
+                    result.setResult(IllegalFlag.ILLEGAL_FLAG);
                     return result;
                 } else {
                     currentIndex++;
@@ -49,7 +46,7 @@ public class JsonObjectResolver implements IJsonResolver {
                 }
             } else if (currentChar == ':') {
                 if (kvFlag % 2 == 0) {
-                    result.setResult(Constants.ILLEGAL_FLAG);
+                    result.setResult(IllegalFlag.ILLEGAL_FLAG);
                     return result;
                 } else {
                     currentIndex++;
@@ -63,7 +60,7 @@ public class JsonObjectResolver implements IJsonResolver {
             ResolverParseResult resolverParseResult = ResolverGroup.INSTANCE.parse(json, currentIndex);
             if (kvFlag % 2 == 0) {
                 if (!(resolverParseResult.getResult() instanceof String)) {
-                    result.setResult(Constants.ILLEGAL_FLAG);
+                    result.setResult(IllegalFlag.ILLEGAL_FLAG);
                     return result;
                 }
                 currentKey = (String) resolverParseResult.getResult();
@@ -77,7 +74,7 @@ public class JsonObjectResolver implements IJsonResolver {
         }
 
         if (!currentParseEnd) {
-            result.setResult(Constants.ILLEGAL_FLAG);
+            result.setResult(IllegalFlag.ILLEGAL_FLAG);
         }
         return result;
     }

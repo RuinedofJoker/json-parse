@@ -1,7 +1,5 @@
 package org.joker.json.parse;
 
-import org.joker.json.exception.common.Constants;
-
 public class NumberResolver implements IJsonResolver {
 
     @Override
@@ -26,7 +24,7 @@ public class NumberResolver implements IJsonResolver {
                     num.append(currentChar);
                     findPoint = true;
                 } else {
-                    result.setResult(Constants.ILLEGAL_FLAG);
+                    result.setResult(IllegalFlag.ILLEGAL_FLAG);
                     return result;
                 }
             } else {
@@ -38,7 +36,7 @@ public class NumberResolver implements IJsonResolver {
         }
 
         if (!currentParseEnd) {
-            result.setResult(Constants.ILLEGAL_FLAG);
+            result.setResult(IllegalFlag.ILLEGAL_FLAG);
             return result;
         }
 
